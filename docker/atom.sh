@@ -4,10 +4,10 @@ feedbegin=`cat <<EOF
 <?xml version="1.0" encoding="utf-8"?>
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>https://www.jillesvangurp.com/atom.xml</id>
-	<title>Jilles van Gurp's blog</title>
-	<link href="https://www.jillesvangurp.com/atom.xml" rel="self" />
-	<link href="https://www.jillesvangurp.com/" />
+  <id>https://www.website.com/atom.xml</id>
+	<title>Website's blog</title>
+	<link href="https://www.website.com/atom.xml" rel="self" />
+	<link href="https://www.website.com/" />
 	<updated>2003-12-13T18:30:02Z</updated>
 EOF
 `
@@ -21,11 +21,11 @@ for name in $(find articles -type f -exec basename {} \; | sort -ur | sed 's/\.m
   day=$(echo $name | sed -E 's/([0-9]{4})-([0-9]{2})-([0-9]{2})-(.*)/\3/')
   title=$(echo $name | sed -E 's/([0-9]{4})-([0-9]{2})-([0-9]{2})-(.*)/\4/')
   nice_title=$(echo "$year-$month-$day - $(echo ${title:0:1} | tr  '[a-z]' '[A-Z]' )${title:1}" | sed -e 's/-/ /g')
-  link="https://www.jillesvangurp.com/$year/$month/$day/$title"
+  link="https://www.website.com/blog/$year-$month-$day-$title.html"
   head -n 17 articles/$name.md| pandoc -f markdown -t html5 \
     --template templates/atom-entry.xml \
     -V link=$link \
-    -V timestamp="${year}-${month}-${day}T12:00:00Z" >> public/atom.xml 
+    -V timestamp="${year}-${month}-${day}T12:00:00Z" >> public/atom.xml
   printf "\n" >> public/atom.xml
 done
 

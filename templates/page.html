@@ -2,9 +2,11 @@
 <html$if(lang)$ lang="$lang$" $endif$$if(dir)$ dir="$dir$" $endif$>
   <head>
     <title>$title$</title>
-    <meta charset='utf-8'>
+    <!-- <meta charset='utf-8'> -->
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
     <meta name="generator" content="pandoc">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     $for(author-meta)$
     <meta name="author" content="$author-meta$">
@@ -19,41 +21,65 @@
     <meta name="keywords" content="$for(tags)$$tags$$sep$, $endfor$">
     $endif$
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://www.jillesvangurp.com/static/jilles.jpg" />
+    <meta property="og:image" content="https://www.website.com/static/3400_3_02.jpg" />
     <meta property="og:title" content="$title$" />
     <meta property="og:description" content="$description$" />
     <link rel="stylesheet" href="style.css" type="text/css" />
     <link href="atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide Atom feed" />
   </head>
-  <body class="">
-    <div id="outer" class="bg-gray-50 lg:w-500 xl:w-900 mx-auto my-5 flex flex-col border-s-0 rounded-lg shadow-xl">
-      <nav>
-        $navigation$
-      </nav>
-      <header>
-        <h1 class="w-full text-center mt-10">$title$</h1>
-        $if(image)$
-        <img src="..$image$" />
-        $endif$
-      </header>
-      <div id="inner" class="md:flex md:flex-row-reverse">
-        <div id="center-column" class="lg:w-max px-10 py-5 m-5">
-          <section id="main-content">
-            $for(include-before)$
-            $include-before$
-            $endfor$
-            $body$
-            $for(include-after)$
-            $include-after$
-            $endfor$
-          </section>
-        </div>
+  <body>
+    <nav>
+      $navigation$
+    </nav>
+    <!-- <div id="outer" class="bg-gray-50 lg:w-550 xl:w-900 mx-auto my-5 flex flex-col border-s-0 rounded-lg shadow-xl"> -->
+
+    <div class="container">
+
+      <div class="sidenav">
+        <a href="/blog/index.html">
+        <h2>Posts</h2>
+        </a>
+        $for(include-before)$
+        $include-before$
+        $endfor$
+        $sidebar$
+        $for(include-after)$
+        $include-after$
+        $endfor$
       </div>
-      <footer>
-        $footer$
-      </footer>
+
+      <!-- <div id="content" class="md:flex md:flex-row-reverse"> -->
+      <div class="content">
+        <header>
+          <h2>$title$</h2>
+          $if(image)$
+          <img src="..$image$" />
+          $endif$
+        </header>
+        <div class="main">
+          <div class="content">
+            <div class="card">
+              $for(include-before)$
+              $include-before$
+              $endfor$
+              $body$
+              $for(include-after)$
+              $include-after$
+              $endfor$
+            </div>
+          </div>
+
+        </div>
+
+      <!-- </div> -->
+
     </div>
-    <div class="lg:absolute lg:left-5 lg:top-5 lg:w-48 text-sm bg-slate-200 hover:bg-slate-100 hover:shadow-2xl p-5 border-s-2 rounded-lg">
+    <div style="width:800px; margin:0 auto;">
+        <footer>
+          $footer$
+        </footer>
+    </div>
+    <!-- <div class="lg:absolute lg:left-5 lg:top-10 lg:w-40 text-sm bg-slate-200 hover:bg-slate-100 hover:shadow-2xl p-5 border-s-2 rounded-lg">
       $for(include-before)$
       $include-before$
       $endfor$
@@ -61,6 +87,72 @@
       $for(include-after)$
       $include-after$
       $endfor$
-    </div>
+    </div> -->
   </body>
   </html>
+
+<style>
+
+.container {
+      grid-column: 1 / -1;
+      grid-gap: 10px;
+      display: grid;
+      grid-template-columns: 200px auto;
+      align-items: flex-start;
+      flex-direction: column;
+
+    }
+
+    .content {
+      position: relative;
+      /* background: rgba(0, 0, 0, 0.5);
+      color: rgba(0, 0, 0, 0.5); */
+      padding: 10px;
+    }
+
+    .card {
+      background-color: white;
+
+
+    }
+
+    .sidenav {
+      height: 100%;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      /* background-color: rgba(0, 0, 0, 0.5); */
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .sidenav a {
+      padding: 5px 5px 6px 10px;
+      text-decoration: none;
+      font-size: 14px;
+      color: #444;
+      display: block;
+    }
+
+    /* .sidenav a:hover {
+      color: yellow;
+    } */
+
+    .main {
+      font-size: 14px;
+      padding: 1px 10px;
+
+
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 12px
+      }
+    }
+
+</style>

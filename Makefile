@@ -16,7 +16,7 @@ pages:
 	# link so we can develop
 	cp .htaccess public
 	cp -R static public
-	cp -R wp-content public
+	# cp -R wp-content public
 	$(SITEGEN) pd-pages.sh
 
 .PHONY: blogindex
@@ -29,11 +29,11 @@ blog: blogindex
 
 .PHONY: run
 run:
-	docker run -dit --rm --name jilles-httpd -p 8080:80 -v "$(shell pwd)/public":/usr/local/apache2/htdocs/ httpd
+	docker run -dit --rm --name site-httpd -p 8080:80 -v "$(shell pwd)/public":/usr/local/apache2/htdocs/ httpd
 
 .PHONY: stop
 stop:
-	docker kill jilles-httpd
+	docker kill site-httpd
 
 .PHONY: minify
 minify:
@@ -60,12 +60,8 @@ atom:
 
 .PHONY: deploy
 deploy:
-	rsync -azpv --exclude maven* --exclude bmath --delete-after  public/* jillesvangurpcom@ftp.jillesvangurp.com:/srv/home/jillesvangurpcom/domains/jillesvangurp.com/htdocs/www
-	rsync -azpv --delete-after  public/.htaccess jillesvangurpcom@ftp.jillesvangurp.com:/srv/home/jillesvangurpcom/domains/jillesvangurp.com/htdocs
+	rsync -hvrPt public/* user@11.111.111.11:~/websitename/
+	scp public/.htaccess hiram@11.111.111.11:~/websitename/
 
 .PHONY: all
 all: clean pages blog sitemap atom minify
-
-
-
-

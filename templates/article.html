@@ -3,9 +3,10 @@
 
   <head>
     <title>$title$</title>
-    <meta charset='utf-8'>
+    <!-- <meta charset='utf-8'> -->
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
     <meta name="generator" content="pandoc">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     $for(author-meta)$
     <meta name="author" content="$author-meta$">
@@ -19,10 +20,10 @@
     $if(tags)$
     <meta name="keywords" content="$for(tags)$$tags$$sep$, $endfor$">
     $endif$
-    <meta property="og:author" content="Jilles van Gurp" />
+    <meta property="og:author" content="Hiram Ring" />
     <meta property="og:title" content="$title$" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="https://www.jillesvangurp.com/static/jilles.jpg" />
+    <meta property="og:image" content="https://www.website.com/static/3400_3_02.jpg" />
     <meta property="og:description" content="$description$" />
     $if(description)$
     <meta property="og:description" content="$description$" />
@@ -34,21 +35,23 @@
     <link rel="stylesheet" href="../style.css" type="text/css" />
     <link href="atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide Atom feed" />
   </head>
-
-  <body class="bg-slate-500">
-    <div id="outer" class="bg-gray-50 lg:w-500 xl:w-900 mx-auto my-5 flex flex-col border-s-0 rounded-lg shadow-xl">
+  <!-- <body class="bg-slate-500"> -->
+  <body class="">
+    <!-- <div id="outer" class="bg-gray-50 lg:w-550 xl:w-900 mx-auto my-5 flex flex-col border-s-0 rounded-lg shadow-xl"> -->
+    <div id="outer" class="lg:w-550 xl:w-900 mx-auto my-5 flex flex-col">
+    <!-- <div id="outer" class="md:flex w-full"> -->
       <nav>
         $navigation$
       </nav>
       <header>
-        <h1 class="w-full text-center mt-10">$title$</h1>
+        <h2 class="w-full text-center mt-10">$title$</h2>
         $if(image)$
         <img src="..$image$" />
         $endif$
         <div class="mx-10"><b>$publishdate$</b></p>
       </header>
 
-      <div id="inner" class="md:flex md:flex-row-reverse w-full">
+      <div id="inner" class="md:flex w-full">
         <div id="center-column" class="lg:w-max px-10 py-5 m-5">
           <section id="main-content">
             $for(include-before)$
@@ -68,3 +71,69 @@
   </body>
 
   </html>
+<style>
+
+.container {
+      grid-column: 1 / -1;
+      grid-gap: 10px;
+      display: grid;
+      grid-template-columns: 200px auto;
+      align-items: flex-start;
+      flex-direction: column;
+
+    }
+
+.content {
+  position: relative;
+  /* background: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5); */
+  padding: 10px;
+}
+
+.card {
+  background-color: white;
+
+
+}
+
+.sidenav {
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 5px 5px 6px 10px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #444;
+  display: block;
+}
+
+/* .sidenav a:hover {
+  color: yellow;
+} */
+
+.main {
+  font-size: 14px;
+  padding: 1px 10px;
+  float: center;
+  text-align: left;
+
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 12px
+  }
+}
+
+</style>

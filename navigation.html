@@ -1,7 +1,81 @@
+
 <div class="xl:flex xl:flex-row gap-3 ml-auto xl-w-max p-2.5">
-  <a href="/">www.jillesvangurp.com</a>
-  <a href="https://rankquest.jillesvangurp.com/">Rankquest Studio</a>
-  <a href="https://jillesvangurp.github.io/kt-search/manual/">Kt-search</a>
-  <a href="/publications.html">Academic Work & Publications</a>
-  <a href="/blog/index.html">Blog</a>
+  <div id="logo">
+    <a class="noform" href="/">Website Home</a>
+  </div>
+  <div id="header-right">
+  <div class="navbar">
+  <div class="subnav">
+    <button class="subnavbtn"><a class="noform" href="/publications.html">Publications</a> </button>
+    <div class="subnav-content">
+      <a class="noform" href="static/clean-resume.pdf">CV</a>
+    </div>
+  </div>
+  <div class="subnav">
+    <button class="subnavbtn"><a class="noform" href="/photos.html">Photos</a> </button>
+  </div>
+  <a class="noform" href="/blog/index.html">Blog</a>
+  </div>
+  </div>
 </div>
+
+<style>
+
+.navbar {
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+.navbar a {
+  float: left;
+  color: #333;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+.subnav .subnavbtn {
+  border: none;
+  outline: none;
+  color: #333;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: inherit;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  background-color: #fafafa;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-left: 10px;
+}
+
+.subnav-content a {
+  float: none;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: #333;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+</style>

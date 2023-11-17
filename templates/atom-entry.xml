@@ -7,7 +7,7 @@ $if(description)$
     <summary>$description$"</summary>
 $endif$
     <author>
-      <name>Jilles van Gurp</name>
+      <name>Hiram Ring</name>
     </author>
     <content type="xhtml">
     <div xmlns="http://www.w3.org/1999/xhtml">

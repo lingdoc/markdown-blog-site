@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 sitemap="public/sitemap.xml"
-baseurl="https://www.jillesvangurp.com"
+baseurl="https://www.website.com"
 timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 function url() {
@@ -20,7 +20,7 @@ header=`cat <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 EOF
-` 
+`
 echo "$header" > $sitemap
 
 for file in $(find public -name "*.html" | sed -e 's/public\///'); do
